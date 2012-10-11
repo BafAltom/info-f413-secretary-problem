@@ -1,3 +1,8 @@
+#-- mine
+
+output_*
+
+# --- GitHub generated
 *.py[co]
 
 # Packages
