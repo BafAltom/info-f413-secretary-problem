@@ -3,6 +3,7 @@
 output_*
 Rapport/*
 !Rapport/rapport.tex
+*~
 
 # --- GitHub generated
 *.py[co]

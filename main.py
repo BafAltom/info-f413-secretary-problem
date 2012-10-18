@@ -38,6 +38,8 @@ if __name__ == "__main__":
 	#list_of_m.append(compute_best_m(SIZE_OF_SAMPLE))
 	current_best_success = 0
 	current_best_m = 0
+	theor_best_m = compute_best_m(SIZE_OF_SAMPLE)
+	theor_best_success = 0
 	for m in list_of_m:
 		print m, "/", len(list_of_m)
 		successCount = 0
@@ -53,7 +55,10 @@ if __name__ == "__main__":
 		if (successRate > current_best_success):
 			current_best_success = successRate
 			current_best_m = m
+		if (m == theor_best_m):
+			theor_best_success = successRate		
 		fileM.write(str(m) + ",\n")
 		fileV.write(str(successRate) + ",\n")
-	print "best m :", current_best_m, "success:", current_best_success
-	print "should be:", compute_best_m(SIZE_OF_SAMPLE)
+	print "theoretical value :", theor_best_m, "success:", theor_best_success, "> 1/e = ", 1/math.e
+	print "actual best m :", current_best_m, "success:", current_best_success
+	
