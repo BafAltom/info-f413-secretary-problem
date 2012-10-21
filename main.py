@@ -5,18 +5,18 @@ NUMBER_OF_TESTS = 1000
 SIZE_OF_SAMPLE = 100
 
 def generate_candidates(n):
-	aList = []
+	l = []
 	for i in range(n):
-		randPos = random.randint(0,len(aList))
-		aList.insert(randPos, i)
-	return aList
+		randPos = random.randint(0,len(l))
+		l.insert(randPos, i)
+	return l
 
 def interview(candidates, m):
 	n = len(candidates)
 	assert (n > m)
-	assert (n >= 1)
+	assert (n > 1)
 	best_candidate = candidates[0]
-	# find best candidate in m first
+	# find best candidate in the first m candidates
 	for i in range(m):
 		if (candidates[i] > best_candidate):
 			best_candidate= candidates[i]
@@ -27,7 +27,7 @@ def interview(candidates, m):
 	return None
 
 def compute_best_m(n):
-	return int(math.ceil(n/math.e))
+	return int(round(n/math.e))
 
 if __name__ == "__main__":
 	fileM = open("output_m.csv", "w")
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 			current_best_success = successRate
 			current_best_m = m
 		if (m == theor_best_m):
-			theor_best_success = successRate		
+			theor_best_success = successRate
 		fileM.write(str(m) + ",\n")
 		fileV.write(str(successRate) + ",\n")
 	print "theoretical value :", theor_best_m, "success:", theor_best_success, "> 1/e = ", 1/math.e

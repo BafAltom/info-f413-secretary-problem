@@ -4,6 +4,7 @@
 \usepackage{color}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{graphicx}
 
 \definecolor{grey}{rgb}{0.9,0.9,0.9}
 
@@ -50,6 +51,8 @@ candidats restants et on engage le premier candidat dont le score est supérieur
 \section{Analyse théorique}
 Cette analyse théorique se base sur l'exercice 2.32 de l'ouvrage de référence du cours\footnote{Ref. [2]}.
 \subsection{Probabilité d'engager le meilleur candidat}
+(Ce calcul se base sur celui détaillé sur la page Wikipédia du problème\footnote{Ref. [3]}\\
+
 Notons
 \begin{math}Pr(E_i)\end{math}
 la probabilité que l'employé
@@ -135,16 +138,61 @@ On peut donc calculer la borne inférieure de probabilité de succès trouvée p
 \begin{math}\;\; m = \frac{n}{e} \Rightarrow Pr(E) \geq \frac{1}{n} \frac{n}{e}(ln(n) - ln(\frac{n}{e}))
 = \frac{1}{e} (ln(n) - ln(n) + 1) = \frac{1}{e}\end{math}\\
 
-
-\section{Implémentation}
-
-
-
 \section{Discussion}
+Afin de vérifier les résultats précédents, une implémentation en Python du problème et de la solution discutée a été effectuée.
+Le code de celle-ci se trouve en annexe. L'implémentation effectuait une série de 1000 tests sur un ensemble de 100 candidats.
+
+\subsection{Probabilité de réussite}
+Pour
+\begin{math}n = 100\end{math},
+on a
+\begin{math}m = \frac{n}{e} \approx 37\end{math}.
+Avec cette valeur, notre implémentation trouve le meilleur candidat avec
+une probabilité
+\begin{math}P = 0.385 > \frac{1}{e} \approx 0.368\end{math}.
+Ceci correspond donc à l'analyse qui avait été faite.
+
+\subsection{Valeur de m}
+On a vu que
+\begin{math}m = \frac{n}{e} \approx 37\end{math}
+était la valeur avec la plus grande probabilité de succès pour notre cas
+(\begin{math}n = 100\end{math}).
+Le graphe suivant montre l'évolution du taux de réussite
+(en ordonnée) par rapport à la valeur de m (en abscisse).\\
+
+\includegraphics[scale=0.5]{../success_m_graph.png}\\
+
+On voit clairement que
+\begin{math}
+ m = 37
+\end{math}
+est très proche du maximum.
+
+
 \section{Références}
 \begin{itemize}
-  \item {[}1] \url{http://en.wikipedia.org/wiki/Secretary_problem}
+  \item {[}1] \url{http://en.wikipedia.org/wiki/Secretary_problem}, visité le 21 Octobre 2012
   \item {[}2] “Probability and Computing”, by M. Mitzenmacher and E. Upfal, Cambridge
+  \item {[}3] \url{http://en.wikipedia.org/wiki/Secretary_problem#Deriving_the_optimal_policy}, visité le 21 Octobre 2012
 \end{itemize}
 \section{Annexes}
+
+\subsection{Génération de l'ordre de passage}
+
+\subsection{Améliorations possibles}
+
+\begin{itemize}
+  \item Optimisation du temps de calcul pour la génération de l'ordre de passage
+  \item Analyse plus fine des résultats
+\end{itemize}
+
+
+\subsection{Code source complet}
+Le code a normalement été fourni avec le présent rapport. Il est aussi disponible sur GitHub :\\
+\url{https://github.com/BafAltom/info-f413-secretary-problem}
+\fontfamily{pcr}
+\lstinputlisting[language=Python]{../main.py}
+\fontfamily{}
+
+
 \end{document}
