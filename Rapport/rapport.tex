@@ -104,16 +104,24 @@ En effectuant le changement de variable
 \begin{math}i = i'+1\end{math},
 on trouve :\\
 
-\begin{math}\;\;Pr(E) = \frac{m}{n} \sum_{i'=m}^{n-1} \frac{1}{i'} = \frac{m}{n} (H(n-1) - H(m))\end{math}\\
+\begin{math}\;\;Pr(E) = \frac{m}{n} \sum_{i'=m}^{n-1} \frac{1}{i'}\end{math}\\
 
-où \begin{math}H(n)\end{math} est le \begin{math}n\end{math}-ème terme de la série harmonique. Or, on sait que
-\begin{math}H(n) \approx ln(n) + O(1)\end{math}, et donc :\\
+La somme de cette expression peut se représenter de la manière suivante sur la courbe
+\begin{math}f(x) = \frac{1}{x}\end{math}:\\
 
-\begin{math}\;\;Pr(E) \approx \frac{m}{n} (ln(n-1) - ln(m)) + O(1)\end{math}\\
+[graphique 1]\\
 
-Ce qui est équivalent (en tout cas pour de grandes valeurs de
-\begin{math}n\end{math}
-) à l'expression recherchée :\\
+Ici, chaque terme de la somme est d'abord représenté par un rectangle jaune de largeur 1 et de longueur
+\begin{math}\frac{1}{i}\end{math}
+placé à droite de la valeur
+\begin{math}i\end{math} correspondante. Ceci permet de voir clairement que la somme est strictement supérieure à
+\begin{math}\int_m^n \frac{1}{x} dx = ln(m) - ln(n)\end{math}\\
+
+Ensuite, en dessinant les rectangles vers la gauche (en hachuré), on voit clairement que la somme est également strictement
+inférieure à, cette fois, 
+\begin{math}\int_{m-1}^{n-1} \frac{1}{x} dx = ln(m-1) - ln(n-1)\end{math}\\
+
+On a donc bien la propriété recherchée :\\
 
 \begin{math}\;\;\frac{m}{n} (ln(n) - ln(m)) \leq Pr(E) \leq \frac{m}{n} (ln(n-1) - ln(m-1))\end{math}\\
 
@@ -157,23 +165,35 @@ On a vu que
 \begin{math}m = \frac{n}{e} \approx 37\end{math}
 était la valeur avec la plus grande probabilité de succès pour notre cas
 (\begin{math}n = 100\end{math}).
-Le graphe suivant montre l'évolution du taux de réussite
-(en ordonnée) par rapport à la valeur de m (en abscisse).\\
+Le graphe suivant montre l'évolution du taux de réussite en fonction de
+\begin{math}m\end{math}. 
+La valeur optimale théorique a été indiquée en bleu.
 
 \includegraphics[scale=0.5]{../success_m_graph.png}\\
 
 On voit clairement que
-\begin{math}
- m = 37
-\end{math}
-est très proche du maximum.
+\begin{math}m = 37\end{math}
+est très proche du maximum.\\
 
+Cette courbe confirme également notre analyse théorique, où on avait trouvé que la relation entre
+\begin{math}m\end{math}
+et
+\begin{math}Pr(E)\end{math}
+était bornée par :\\
+
+\begin{math}\;\;\frac{m}{n} (ln(n) - ln(m)) \leq Pr(E) \leq \frac{m}{n} (ln(n-1) - ln(m-1))\end{math}\\
+
+Le graphe expérimental trouvé précédemment coincide avec le graphe de ces deux fonctions :
+
+\includegraphics[scale=0.75]{../success_m_graph_the.png}\\
+(Source : Wolfram Alpha\footnote{Ref. [4]}
 
 \section{Références}
 \begin{itemize}
   \item {[}1] \url{http://en.wikipedia.org/wiki/Secretary_problem}, visité le 21 Octobre 2012
   \item {[}2] “Probability and Computing”, by M. Mitzenmacher and E. Upfal, Cambridge
   \item {[}3] \url{http://en.wikipedia.org/wiki/Secretary_problem#Deriving_the_optimal_policy}, visité le 21 Octobre 2012
+  \item {[}4] \url{www.wolframalpha.com} Requète exacte : \url{http://is.gd/JstESE}
 \end{itemize}
 \section{Annexes}
 

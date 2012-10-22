@@ -59,6 +59,6 @@ if __name__ == "__main__":
 			theor_best_success = successRate
 		fileM.write(str(m) + ",\n")
 		fileV.write(str(successRate) + ",\n")
-	print "theoretical value :", theor_best_m, "success:", theor_best_success, "> 1/e = ", 1/math.e
+	print "theoretical value :", theor_best_m, "success:", theor_best_success, "> 1/e = ", round(1/math.e, 2)
 	print "actual best m :", current_best_m, "success:", current_best_success
 	
